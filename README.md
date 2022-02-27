@@ -1,4 +1,4 @@
-# Insert Lesson Title
+# Spring Boot: TDD
 
 ## Dependencies
 
@@ -10,11 +10,20 @@ Refer to the following markdown file for the respective sections of the class:
 ## Lesson Objectives
 
 Learners will understand:
-- Insert the knowledge to be acquired
+- What is TDD.
+- What is "red, green, refactor".
+- What is Unit Test.
+- What to test.
+- Pros and cons of writing unit tests.
+- Difference between `@SpringBootTest` and `TestConfiguration`.
 
 Learners will be able to:
-- Insert the skillset to be acquired
+- Setup project for unit test.
+- Run a simple assertion test with `@Test` annotation against expected values to be returned from another method.
+- Use `MvcMock` to test against API.
+- Use `@MockBean` to mock the data returned by JPA.
 
+> TDD and Unit Tests are two separate topics. It is better to help students understand how to write unit tests practically and understand the proper way of TDD for their future employment benefits. Lesson delivery need not follow the "red, green, refactor" approach yet good to educate learners on it. 
 
 ## Lesson Plan
 
