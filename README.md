@@ -30,18 +30,18 @@ Learners will be able to:
 |Duration|What|How or Why|
 |--------|-----|-------|
 |- 5mins |Start zoom session|So that students can join early and start class on time|
-|15 mins|Self studies check-in|Does every students have JDK installed? Are there any questions on self-studies? If the students do not have SDK installed, they can practice in class using w3schools links provided in the self studies.|
-|15 mins|I DO Part 1|Instructor demonstrates the syntax of writing a class with main method.|
-|15 mins|WE DO Part 1|Learners write a class with main method.|
-|15 mins|I DO Part 2|Instructors demonstrate compiling and running Java code using `javac` and `java` on CLI|
-|15 mins|WE DO Part 2|Learners compile and run Java Code using `javac` and `java` on CLI|
-|5 mins| Break||
-|||**1 HR 20 MIN**|
-|15 mins|I DO Part 3| Instructor demonstrates initializing String and Integer variables and print it.|
-|15 mins|WE DO part 3| Learners initialize String, Integer, Char and Float variables. Then, print it.|
-|10 mins|Assignment briefing|
-|||**2 HR 00 MIN**|
-|40 mins|Learners self attempt on assignments|
-|20 mins|Instructors walk through at least 1 question of the assignmentsd|
-|||**END CLASS 2 HR 30 MIN**|
+|10 mins|Self studies check-in|Prepare 3 questions for students to answer as a form of warm up and engaging students with the lesson topic.|
+|30 mins|Conceptual Knowledge| Instructors brief students on the subject matter conceptually before diving into hands on. This section can be shorter but not longer. Use video clips for explanation if necessary.|
+|20 mins|Code Along| Practical hands on|
+||**1 HR MARK**|
+|5 mins|Break|Break|
+|40 mins|Code Along| Practical hands on|
+|5 mins|Buffer|In case of overrun|
+|5 mins|Break||
+|5 mins|Assignment Briefing|Help students to understand the expectation and direction of the assignment to prevent mis-interpretations.|
+||**2 HR MARK**|
+|50 mins|Learners self attempt on assignments|
+|10 mins|Instructors assist learners to push changes to remote repository.|
+||**END CLASS 3 HR MARK**|
+
 
