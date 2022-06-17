@@ -229,7 +229,5 @@ Step 4: Run test on terminal
 
 Run `./mvnw test` on Terminal. Ensure that you are on the same directory as `pom.xml`.
 
-If you change `status().isNotFound()` to something else, the test should fail.
-
 
 End.
