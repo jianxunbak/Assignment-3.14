@@ -127,7 +127,58 @@ Since spring boot v2.4.0 onwards, JUnit 5 is automatically included in the `spri
 
 ## Part 3 - MockMVC Test
 
-Insert Instructions
+In this part, we will be running tests against the `CatalogueController.java` class that is annotated with `@RestController`. Yet, mocking the data layer, namely `CatalogueRepository.java` that is annotated with `@Repository`.
+
+Before we start writing Test code, let's observe the project [src](./src/shoppingcartapi/src/) folder. There are `main` and `test` folders. The `main` folder contains Application Code (App Code) while the `test` folder contains (Test Code). The folder structure between the `main` and `test` folder are similar. 
+
+Let's start with the `CatalogueControllerTest.java` file located [here](./src/shoppingcartapi/src/test/java/com/skillsunion/shoppingcartapi/controller/CatalogueControllerTest.java).
+
+Step 1: Annotate the class with `@WebMvcTest`.
+
+```java
+@WebMvcTest(CatalogueController.class)
+public class CatalogueControllerTest {
+```
+
+Step 2: Define the possible test cases with the Given-When-Then approach. Let's look at a simple `get` method from the App Code [CatalogueController.java](./src/shoppingcartapi/src/main/java/com/skillsunion/shoppingcartapi/controller/CatalogueController.java)
+
+```java
+@GetMapping(value = "/catalogues/{id}")
+public ResponseEntity<Optional<Catalogue>> get(@PathVariable int id){
+    Optional<Catalogue> result = (Optional<Catalogue>) repo.findById(id);
+    if(result.isPresent()) return ResponseEntity.ok(result);
+    
+    return ResponseEntity.notFound().build();
+}
+```
+|Scenario #|Given|When|Then|
+|-|-----|----|----|
+|1|Catalogue Id is not found|method is called|return status 404 not found|
+|2|Catalogue Id is present|method is called|return status 200 ok and response body|
+|3|Database connection is lost|method is called|return 500 status internal server error|
+
+Step 3: Let's write test case for scenario #1.
+
+```java
+@Test
+public void givenNoDataExist_whenFetchById_thenReturnNotFound() throws Exception {
+        
+    int mockId = 1; // mock path variable
+
+    // mock repository layer
+    Optional<Catalogue> catalogue = Optional.empty();
+    when(mockRepo.findById(mockId)).thenReturn(catalogue);
+    
+    // call the method
+    this.mockMvc.perform(get("/catalogues/"+mockId)).andDo(print()).andExpect(status().isNotFound());    
+}
+```
+
+> Get ready to resolve dependencies issues
+
+Step 4: Run test on terminal
+
+Run `./mvnw test` on Terminal. Ensure that you are on the same directory as `pom.xml`.
 
 ---
 
