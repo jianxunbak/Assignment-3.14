@@ -180,8 +180,56 @@ Step 4: Run test on terminal
 
 Run `./mvnw test` on Terminal. Ensure that you are on the same directory as `pom.xml`.
 
+If you change `status().isNotFound()` to something else, the test should fail.
+
 ---
 
 ## Part 4 - JUnit Test
 
-Insert Instructions
+In this part, we will focus on testing against business logic.The business logics are typically written in the classes annotated with `@Service`. The `@Service` annotation is a child of `@Component`. 
+
+We will be writing Test Code against [ServiceForTest.java](./src/shoppingcartapi/src/main/java/com/skillsunion/shoppingcartapi/service/ServiceForTest.java).
+
+Let's start writing Test Code for [TestServiceForTest.java](./src/shoppingcartapi/src/test/java/com/skillsunion/shoppingcartapi/service/TestServiceForTest.java).
+
+Step 1: Annotate the class with `@SpringBootTest`.
+
+Step 2: Define the possible test cases with the Given-When-Then approach. Let's look at a simple `verifyPassword` method from the App Code [ServiceForTest.java](./src/shoppingcartapi/src/test/java/com/skillsunion/shoppingcartapi/service/TestServiceForTest.java)
+
+```java
+public int verifyPassword(String password) throws Exception{
+		
+    if(password.length() < 8) {
+        throw new Exception("Password must be at least 8 characters");
+    }else {
+        return password.length();
+    }
+    
+}
+```
+|Scenario #|Given|When|Then|
+|-|-----|----|----|
+|1|Password length is 8|method is called|return 8|
+|2|Password length is 9|method is called|return 9|
+|3|Password length is 7|method is called|throws exception|
+
+Step 3: Let's write Test Code for scenario #1
+
+```java
+@Test
+public void givenPasswordWithLengthEight_whenMethodIsCalled_thenReturnIntEight() throws Exception {
+    String password = "long password";
+    int length = service.verifyPassword(password);
+    assertEquals(password.length(), length);
+}
+```
+> Get ready to resolve dependencies issues
+
+Step 4: Run test on terminal
+
+Run `./mvnw test` on Terminal. Ensure that you are on the same directory as `pom.xml`.
+
+If you change `status().isNotFound()` to something else, the test should fail.
+
+
+End.

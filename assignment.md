@@ -2,7 +2,24 @@
 
 ### Brief
 
-Enter instruction for assignment here.
+Work on scenario #2 from Part 3 of the lesson:
+
+|Scenario #|Given|When|Then|
+|-|-----|----|----|
+|1|Catalogue Id is not found|method is called|return status 404 not found|
+|2|Catalogue Id is present|method is called|return status 200 ok and response body|
+|3|Database connection is lost|method is called|return 500 status internal server error|
+
+### Challenge
+
+If you have completed the above, challenge yourself to work on scenario #3 from Part 4 of the lesson:
+
+|Scenario #|Given|When|Then|
+|-|-----|----|----|
+|1|Password length is 8|method is called|return 8|
+|2|Password length is 9|method is called|return 9|
+|3|Password length is 7|method is called|throws exception|
+
 
 ### Submission 
 

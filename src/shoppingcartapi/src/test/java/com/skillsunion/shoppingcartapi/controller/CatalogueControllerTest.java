@@ -27,27 +27,5 @@ public class CatalogueControllerTest {
 	@MockBean
 	private CatalogueRepository mockRepo;
 	
-	@Test
-	public void givenNoDataExist_whenFetchById_thenReturnNotFound() throws Exception {
-		
-		int mockId = 1;
-		Optional<Catalogue> catalogue = Optional.empty();
-		when(mockRepo.findById(mockId)).thenReturn(catalogue);
-		this.mockMvc.perform(get("/catalogues/"+mockId)).andDo(print()).andExpect(status().isNotFound());
-		
-	}
-	
-	@Test
-	public void givenDataExist_whenFetchById_thenReturnOkAndData() throws Exception {
-		Catalogue cat = new Catalogue();
-		cat.setId(1);
-		cat.setName("cat");
-		cat.setPrice(1.9f);
-		Optional<Catalogue> dataToReturn = Optional.of(cat);
-		when(mockRepo.findById(cat.getId())).thenReturn(dataToReturn);
-		ResultActions result = this.mockMvc.perform(get("/catalogues/"+cat.getId()))
-				.andDo(print())	
-				.andExpect(jsonPath("$.name").value(cat.getName()))
-				.andExpect(status().isOk());
-	}
+	// Add code here
 }
