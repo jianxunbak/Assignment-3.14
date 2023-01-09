@@ -42,11 +42,9 @@
 - D: None of the above
 ---
 
-### Q7: What annotation states that a class will contain the functions for database queries?
-- A: Query
-- B: DatabaseFunctions
-- C: Repository
-- D: None of the above
+### Q7: The directory should be the one where the pom.xml is located when running the command ./mvnw test
+- A: True
+- B: False
 ---
 
 ### Q8: What is the dependency used to create and execute tests?
