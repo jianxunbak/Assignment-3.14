@@ -62,7 +62,8 @@
 ---
 
 ### Q10: What annotation is used for Spring MVC tests by disabling full auto-configuration and instead applies only configuration relevant to MVC tests.
-- A: ass
-- B: assertEquals
-- C: AssertEquals
-- D: assertBoth
+What annotation is used for Spring MVC tests by disabling full auto-configuration and instead applies only configuration relevant to MVC tests.
+- A: MockMVC
+- B: MockEnv
+- C: DisableMVC
+- D: ConfigMVC
