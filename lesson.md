@@ -353,7 +353,7 @@ public class CustomerServiceImplTest {
 
 We start with our setup.
 
-- We create a new customer using the builder pattern. Note that you can also create it using the usual constructor method.
+- We create a new customer using the builder pattern. To allow that, we add `@Builder` on our `Customer` class. Note that you can also create it using the usual constructor method.
 - Then we mock the `save()` method of the `CustomerRepository` to return the customer that is passed in. This is because we want to test the `createCustomer()` method and not the `save()` method of the `CustomerRepository`.
 - We can use the `when()` method to tell Mockito what to do when the `save()` method of the `CustomerRepository` is called. In this case, we want to return the customer that is passed in.
 
@@ -494,7 +494,7 @@ private ObjectMapper objectMapper;
 @Test
 public void validCustomerCreationTest() throws Exception {
 	// Step 1: Create a Customer object
-	 Customer customer = Customer.builder().firstName("Clint").lastName("Barton").email("clint@avengers.com")
+	 Customer newCustomer = Customer.builder().firstName("Clint").lastName("Barton").email("clint@avengers.com")
         .contactNo("12345678").jobTitle("Special Agent").yearOfBirth(1975).build();
 
 	// Step 2: Convert the Java object to JSON using ObjectMapper
@@ -522,7 +522,7 @@ public void validCustomerCreationTest() throws Exception {
 @Test
 public void invalidCustomerCreationTest() throws Exception {
     // Step 1: Create a Customer object with invalid fields
-    Customer invalidCustomer = new Customer(3, "  ", "  ", "bruce@a.com", "12345678", "Manager", 1990);
+    Customer invalidCustomer = new Customer(3L, "  ", "  ", "bruce@a.com", "12345678", "Manager", 1990, null);
 
     // Step 2: Convert the Java object to JSON
     String invalidCustomerAsJSON = objectMapper.writeValueAsString(invalidCustomer);
