@@ -477,7 +477,7 @@ public void getAllCustomersTest() throws Exception {
     mockMvc.perform(request)
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.size()").value(3));
+            .andExpect(jsonPath("$.size()").value(4));
 }
 ```
 
@@ -509,7 +509,7 @@ public void validCustomerCreationTest() throws Exception {
 	mockMvc.perform(request)
 			.andExpect(status().isCreated())
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			.andExpect(jsonPath("$.id").value(4))
+			.andExpect(jsonPath("$.id").value(5))
 			.andExpect(jsonPath("$.firstName").value("Clint"))
 			.andExpect(jsonPath("$.lastName").value("Barton"));
 
