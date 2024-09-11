@@ -243,7 +243,7 @@ public class DemoServiceTest {
 
 ### Generating HTML Report
 
-You can run `mvn surefire-report:report` and a HTML report will be generated in `target/site/surefire-report.html`.
+You can run `mvn surefire-report:report` and a HTML report will be generated in `target/reports/surefire.html`.
 
 ### 👨‍💻 Activity
 
