@@ -2,7 +2,7 @@
 
 ### Brief
 
-Work on scenario #2 from Part 3 of the lesson:
+Create test cases for the following scenarios for `CatalogueController` in `CatalogueControllerTest.java`:
 
 |Scenario #|Given|When|Then|
 |-|-----|----|----|
@@ -12,7 +12,8 @@ Work on scenario #2 from Part 3 of the lesson:
 
 ### Challenge
 
-If you have completed the above, challenge yourself to work on scenario #3 from Part 4 of the lesson:
+If you have completed the above, challenge yourself by working on creating unit tests for `ServiceForTest.java` for the following scenarios:
+Write your unit tests in `TestServiceForTest.java`.
 
 |Scenario #|Given|When|Then|
 |-|-----|----|----|
