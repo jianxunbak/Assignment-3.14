@@ -288,7 +288,13 @@ Mocking is a technique used in unit testing to isolate a class under test from i
 In our case of testing the service layer, we will mock the repository layer. This means instead of calling the repository layer, we will create a mock object that simulates the behavior of the repository layer.
 
 ```java
-@SpringBootTest
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
 public class CustomerServiceImplTest {
 
   // We need to mock the CustomerRepository
@@ -297,24 +303,26 @@ public class CustomerServiceImplTest {
   private CustomerRepository customerRepository;
 
   @InjectMocks // Inject the mocks as dependencies into CustomerServiceImpl
-  CustomerServiceImpl customerService;
+  CustomerServiceImpl customerService; // // Instantiated and injected by Mockito
 
   // ...
 }
 ```
 
-The `@SpringBootTest` annotation is used to tell JUnit to bootstrap the Spring context. This allows us to inject beans as needed.
+The `@ExtendWith(MockitoExtension.class)` annotation is used to enable the Mockito extension for JUnit 5. It will automatically initialize the mocks and inject them into the test class.
 
 The `@Mock` annotation is used to tell Mockito to create a mock object for the `CustomerRepository` class.
 
 The `@InjectMocks` annotation is used to tell Mockito to inject the mock object into the `CustomerServiceImpl` class.
+
+With this, we do not have to spin up the entire Spring application context and we can test the service layer in isolation.
 
 ### Test Create Customer
 
 Now we can add a test method to test the `createCustomer()` method.
 
 ```java
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class CustomerServiceImplTest {
 
   // Mock the customer repository
@@ -326,7 +334,7 @@ public class CustomerServiceImplTest {
   private CustomerServiceImpl customerService;
 
   @Test
-  public void createCustomerTest() {
+  public void testCreateCustomer() {
 
     // 1. SETUP
     // Create a new customer
@@ -364,14 +372,14 @@ Next we execute, which is to call the method that we want to test
 Finally, we assert.
 
 - We assert that the customer that is returned by the `createCustomer()` method is the same as the customer that we created earlier.
-- Note that we have to override the `equals()` method in the `Customer` class for this to work. You can use VSCode to do this. Right click on the `Customer` class and select `Generate hashCode() and equals()`. Select all the fields and click `Generate`.
+- Note that we have to override the `equals()` method in the `Customer` class for this to work. You can use VSCode to do this. Right click on the `Customer` class and select `Generate hashCode() and equals()`. Select all the fields and click `Generate`. Alternatively, we can use the `@EqualsAndHashCode` annotation from Lombok.
 - We also verify that the `save()` method of the `CustomerRepository` is called once. This is to ensure that the `createCustomer()` method is calling the `save()` method of the `CustomerRepository`.
 
 ### Test Get Customer
 
 ```java
 @Test
-public void getCustomerTest() {
+public void testGetCustomer() {
     // 1. SETUP
     // Create a new customer
     Customer customer = Customer.builder().firstName("Clint").lastName("Barton").email("clint@avengers.com")
