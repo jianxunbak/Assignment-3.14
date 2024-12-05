@@ -14,9 +14,9 @@ A software bug is an error, flaw or fault in a computer program or system that c
 
 The term bug was popularized by Grace Hopper in 1947 while she was working on a Mark II Computer at Harvard University. Hopper was working as a programmer on the Mark II when a moth causing problems with the hardware was found. The moth was removed and taped to the computer's log book. Following this event, the term bug was used to describe computer system failures.
 
-<img src="https://www.bbvaopenmind.com/wp-content/uploads/2015/10/BBVA-OpenMind-ventana-primer-bug-ppal.jpg" width=400 style="background-color: #fff; padding: 20px;border-radius: 5px;border: 1px solid #eee;">
+<img src="./assets/computer-bug.jpg" width=500 style="background-color: #fff; padding: 20px;border-radius: 5px;border: 1px solid #eee;">
 
-> Source: https://www.bbvaopenmind.com/en/technology/innovation/when-computer-bugs-where-real-insects/
+> Source: https://education.nationalgeographic.org/resource/worlds-first-computer-bug/
 
 Software testing is a process of executing a program or application with the intent of finding the software bugs. It can also be stated as the process of validating and verifying that a software program or application or product meets the business and technical requirements.
 
