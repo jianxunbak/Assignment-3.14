@@ -303,7 +303,7 @@ public class CustomerServiceImplTest {
   private CustomerRepository customerRepository;
 
   @InjectMocks // Inject the mocks as dependencies into CustomerServiceImpl
-  CustomerServiceImpl customerService; // // Instantiated and injected by Mockito
+  CustomerServiceImpl customerService; // Instantiated and injected by Mockito
 
   // ...
 }
@@ -419,6 +419,10 @@ In Unit Testing, we test a small unit of the application. In Integration Testing
 How do we test a REST Controller? Spring provides a library called `MockMvc` that allows us to mock HTTP requests and responses. We can use MockMvc to test our REST Controller.
 
 Let's create a `CustomerControllerTest.java` in the corresponding test folder.
+
+We need to annotate it first with `@SpringBootTest`, which will load the Spring application context. This will allow us to test the controller as if it is running in a real Spring application because it will load all the beans and configurations.
+
+We also need to annotate it with `@AutoConfigureMockMvc`, which will autowire the `MockMvc` object. This object is used to perform the HTTP requests.
 
 ### Test Get Customer
 
