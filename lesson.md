@@ -233,9 +233,9 @@ public class DemoServiceTest {
 
   DemoService demoService;
 
+  // This method is executed before each test method
   @BeforeEach
   public void init() {
-    System.out.println("Before each test");
     demoService = new DemoService();
   }
 }
