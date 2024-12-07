@@ -23,60 +23,63 @@ import com.skillsunion.shoppingcartapi.repository.CatalogueRepository;
 
 @RestController
 public class CatalogueController {
-	
-	@Autowired CatalogueRepository repo; // Added
-    
-	// Updated (produces = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping(value="/catalogues", method = RequestMethod.GET ,consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<List<Catalogue>> list(@RequestParam(defaultValue = "") String search){
+
+    @Autowired
+    CatalogueRepository repo; // Added
+
+    // Updated (produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/catalogues", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody ResponseEntity<List<Catalogue>> list(@RequestParam(defaultValue = "") String search) {
         List<Catalogue> results = repo.findByNameContaining(search);
-        System.out.println("Results Size: "+results.size());
-        if(results.size() == 0) {
-        	return ResponseEntity.notFound().build();
-        }else {
-        	return ResponseEntity.ok(results);
+        System.out.println("Results Size: " + results.size());
+        if (results.size() == 0) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(results);
         }
     }
 
     /*
-        Switch between @PathVariable and @RequestParam to help learners understand
-        the difference.
-
-        @PathVariable => /catalogues/1
-        @RequestParam => /catalogues?id=1
-    */
+     * Switch between @PathVariable and @RequestParam to help learners understand
+     * the difference.
+     * 
+     * @PathVariable => /catalogues/1
+     * 
+     * @RequestParam => /catalogues?id=1
+     */
     @GetMapping(value = "/catalogues/{id}")
-    public ResponseEntity<Optional<Catalogue>> get(@PathVariable int id){
+    public ResponseEntity<Optional<Catalogue>> get(@PathVariable int id) {
         Optional<Catalogue> result = (Optional<Catalogue>) repo.findById(id);
-        if(result.isPresent()) return ResponseEntity.ok(result);
-        
+        if (result.isPresent())
+            return ResponseEntity.ok(result);
+
         return ResponseEntity.notFound().build();
     }
 
     /*
-        By default, a @PostMapping assumes application/json content type.
-    */
+     * By default, a @PostMapping assumes application/json content type.
+     */
     @PostMapping(value = "/catalogues")
-    public ResponseEntity<Catalogue> create(@RequestBody RequestBodyTempData data){
+    public ResponseEntity<Catalogue> create(@RequestBody RequestBodyTempData data) {
         Catalogue newRecord = new Catalogue();
         newRecord.setName(data.getName());
         newRecord.setPrice(data.getPrice());
-        
+
         try {
-        	Catalogue created = repo.save(newRecord);
+            Catalogue created = repo.save(newRecord);
             return ResponseEntity.created(null).body(created);
-        }catch(Exception e) {
-        	System.out.println(e);
-        	return ResponseEntity.internalServerError().build();
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.internalServerError().build();
         }
-        
+
     }
 }
 
 /*
-    This is a private class, not accessible outside this java file.
-    We will use this for now. In the future, the request body
-*/
+ * This is a private class, not accessible outside this java file.
+ * We will use this for now. In the future, the request body
+ */
 class RequestBodyTempData {
     String name;
     float price;

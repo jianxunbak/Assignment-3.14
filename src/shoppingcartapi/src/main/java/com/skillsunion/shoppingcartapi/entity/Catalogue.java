@@ -12,31 +12,40 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@EqualsAndHashCode
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "catalogue", schema = "public")
 public class Catalogue {
-    
+
 	@Id
-    @Column(name = "id", nullable=false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Column(name = "id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "price")
-    private Float price;
+	@Column(name = "price")
+	private Float price;
 
-    @Column(name = "short_description")
-    private String shortDesc;
+	@Column(name = "short_description")
+	private String shortDesc;
 
-    @Column(name = "created_at")
-    @CreationTimestamp
-    private Timestamp createdAt;
+	@Column(name = "created_at")
+	@CreationTimestamp
+	private Timestamp createdAt;
 
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private Timestamp updatedAt;
+	@Column(name = "updated_at")
+	@UpdateTimestamp
+	private Timestamp updatedAt;
 
 	public Integer getId() {
 		return id;
@@ -85,5 +94,5 @@ public class Catalogue {
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
+
 }
